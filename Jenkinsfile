@@ -24,7 +24,7 @@ sh "docker build -t hemanth/calculator ."
 }
 stage("Docker push") {
 steps {
-sh "docker push leszko/calculator"
+sh "docker push hemanth/calculator"
 }
 }
 }
