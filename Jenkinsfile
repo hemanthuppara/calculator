@@ -30,7 +30,7 @@ sh "docker push localhost:5000/calculator:latest"
 }
 stage("Deploy to staging") {
 steps {
-sh "docker run -d --rm -p 8765:8080 --name calculator localhost:5000/calculator:latest"
+sh "docker run -d --rm -p 8765:8765 --name calculator localhost:5000/calculator:latest"
 }
 }
 stage("Acceptance test") {
