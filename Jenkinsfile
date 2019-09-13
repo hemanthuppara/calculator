@@ -27,5 +27,12 @@ steps {
 sh "docker push hemanth/calculator"
 }
 }
+stage("Deploy to staging") {
+steps {
+sh "docker run -d --rm -p 8765:8080 --name calculator
+hemanth/calculator"
+}
+}
+
 }
 }
