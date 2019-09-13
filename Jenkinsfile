@@ -19,17 +19,18 @@ sh "./gradlew build"
 }
 stage("Docker build") {
 steps {
-sh "docker build -t hemanth/calculator ."
+sh "docker build -t calculator ."
 }
 }
 stage("Docker push") {
 steps {
-sh "docker push hemanth/calculator"
+sh "docker tag calculator localhost:5000/calculator:latest"
+sh "docker push localhost:5000/calculator:latest"
 }
 }
 stage("Deploy to staging") {
 steps {
-sh "docker run -d --rm -p 8765:8080 --name calculator hemanth/calculator"
+sh "docker run -d --rm -p 8765:8080 --name calculator calculator"
 }
 }
 stage("Acceptance test") {
